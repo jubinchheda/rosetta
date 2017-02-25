@@ -1,16 +1,16 @@
 // Solution for http://rosettacode.org/wiki/Split_a_character_string_based_on_change_of_character
 #include<string>
 #include<iostream>
-std::string spliter(std::string input) {
-   bool firstCommaPast = false;
+auto spliter(const std::string &input) {
+   auto firstCommaPast = false;
    std::string res ="";
-   char prev = '\0';
-   for(std::string::iterator it = input.begin(); it != input.end();++it) {
+   auto prev = '\0';
+   for(auto it = input.cbegin(); it != input.cend();++it) {
       if(*it!=prev) {
          if(!firstCommaPast) {
             firstCommaPast = true;
          } else {
-            res+=",";
+            res+=", ";
          }
       }
       res+=*it;
@@ -20,7 +20,6 @@ std::string spliter(std::string input) {
 }
 
 int main() {
-   std::string input = R"(gHHH5YY++///\)";
-   std::string res = spliter(input);
-   std::cout<<res;
-}
+   auto input = R"(gHHH5  ))YY++,,,///\)";
+   std::cout<<spliter(input);
+}  
